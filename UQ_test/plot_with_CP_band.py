@@ -38,7 +38,8 @@ def get_all_raw_signals():
     CFM_metric.extend([list(map(func_to_float, value[7].split('/'))) for key, value in eval_log.items() if cond_func(key)])
     RND_metric.extend([list(map(func_to_float, value[8].split('/'))) for key, value in eval_log.items() if cond_func(key)])
     # Randomly add 1 to successes
-    successes = [1 if np.random.rand() < 0.5 else 0 for _ in range(len(successes))]
+    # This code will make the accuracy of every method be about 0.5 since it randomizes the successes.
+    # successes = [1 if np.random.rand() < 0.5 else 0 for _ in range(len(successes))]
     results = [successes]
     baselines = [STAC_metric, PCA_kmeans_metric, logpO_metric, logpZO_metric, 
                  DER_metric, NatPN_metric, CFM_metric, RND_metric]                 
